@@ -1,10 +1,11 @@
 ---
 title: recording-blog 
 date: 2024-04-16 22:53:08
+cover: 001_wp.png
 categories:
 - Note
 tags:
-- dxm_recording
+- Recording
 ---
 
 <div style="text-align: center; font-size: 30px; font-weight: bold; font-family: 'Courier New', Courier, monospace; color: lightseagreen;">
@@ -90,5 +91,18 @@ marked:
 ```
 
 #### 24.04.19：新增resume
+```bash
+---
+title: RESUME
+date: 2023-04-16
+layout: page
+---
+```
 
+#### 24.04.21：support themes new feature
 
+- More info: <a href="https://blog.cuijiacai.com/blog-building/">个人博客教程</a>
+- More info: [dxm blog](https://blogdxm.netlify.app/)
+- More info: [dxm github](https://github.com/)
+- More info: [dxm nelify](https://app.netlify.com/sites/blogdxm/overview)
+- More info: [dxm 图床](https://pic.gimhoy.com/#1)

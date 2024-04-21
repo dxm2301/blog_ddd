@@ -1,11 +1,13 @@
 ---
 title: Tutorial-Linux
 data: 2024.04.14 18:00
+cover: wp_002.png
 categories:
-- Note
+- [Note, Linux]
 tags:
 - Linux
 - Vim
+- GDB
 - Git
 ---
 
