@@ -7,6 +7,7 @@ language: en
 timezone: ''
 url: http://example.com
 permalink: ':year/:month/:day/:title/'
+# permalink: :title/
 permalink_defaults: null
 pretty_urls:
   trailing_index: true
@@ -55,6 +56,9 @@ default_category: uncategorized
 category_map:
   Note: note
   Gallery: gallery
+  Job: job
+  # 算子开发: operator
+
 tag_map: null
 meta_generator: true
 date_format: YYYY-MM-DD

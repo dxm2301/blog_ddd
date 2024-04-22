@@ -107,16 +107,18 @@ menu:
 # secend value is the name of Font icon.
 social:
   github: https://github.com/ || github || "#191717"
+  email: https://mail.qq.com/cgi-bin/frame_html?sid=fkziO2PcQlRwMVQy&r=886d669ba7b852025995b2f45ba3cefa&lang=zh || envelope || "#55acd5"
   # google: https://www.google.com.hk/?hl=cn || google
-  bilibili: https://www.bilibili.com/ || bilibili || "#00aff0"
   zhihu: https://www.zhihu.com/hot || zhihu || "#1e88e5"
   music: https://music.163.com/#/my/m/music/playlist?id=408219354 || cloud-music || "#e60026"
+  bilibili: https://www.bilibili.com/ || bilibili || "#00aff0"
+  youtube: https://www.youtube.com/ || youtube
   #weibo: https://weibo.com/yourname || weibo || "#ea716e"
   #about: https://about.me/yourname || address-card || "#3b5998"
-  email: https://mail.qq.com/cgi-bin/frame_html?sid=fkziO2PcQlRwMVQy&r=886d669ba7b852025995b2f45ba3cefa&lang=zh || envelope || "#55acd5"
+  
   #facebook: https://www.facebook.com/yourname || facebook
   #stackoverflow: https://stackoverflow.com/yourname || stack-overflow
-  youtube: https://www.youtube.com/ || youtube
+  
   #instagram: https://instagram.com/yourname || instagram
   #skype: skype:yourname?call|chat || skype
   #douban: https://www.douban.com/people/yourname/ || douban

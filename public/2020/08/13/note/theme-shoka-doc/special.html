@@ -1,0 +1,629 @@
+<hr>
+<h2 id="title-Step-4-主题特殊功能date-2020-08-13-21-45-48categories-计算机科学-二进制杂谈-Theme-Shoka-Documentation-tags-Hexo-教程math-truemermaid-truequiz-truevaline-placeholder-“1-提问前请先仔细阅读本文档⚡-n2-页面显示问题💥，请提供控制台截图📸或者您的测试网址-n3-其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪”"><a href="#title-Step-4-主题特殊功能date-2020-08-13-21-45-48categories-计算机科学-二进制杂谈-Theme-Shoka-Documentation-tags-Hexo-教程math-truemermaid-truequiz-truevaline-placeholder-“1-提问前请先仔细阅读本文档⚡-n2-页面显示问题💥，请提供控制台截图📸或者您的测试网址-n3-其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪”" class="headerlink" title="title: Step.4 主题特殊功能date: 2020&#x2F;08&#x2F;13 21:45:48categories:- [计算机科学, 二进制杂谈, Theme Shoka Documentation]tags:- Hexo- 教程math: truemermaid: truequiz: truevaline:  placeholder: “1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪”"></a>title: Step.4 主题特殊功能<br>date: 2020&#x2F;08&#x2F;13 21:45:48<br>categories:<br>- [计算机科学, 二进制杂谈, Theme Shoka Documentation]<br>tags:<br>- Hexo<br>- 教程<br>math: true<br>mermaid: true<br>quiz: true<br>valine:<br>  placeholder: “1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪”</h2><p>:::primary<br><a href="/computer-science/note/theme-shoka-doc/">:rocket:快速开始</a> - <a href="/computer-science/note/theme-shoka-doc/dependents/">:love_letter:依赖插件</a> - <a href="/computer-science/note/theme-shoka-doc/config/">:pushpin:基本配置</a> - <a href="/computer-science/note/theme-shoka-doc/display/">:rainbow:界面显示</a> - <a href="/computer-science/note/theme-shoka-doc/special/"><strong>:unicorn:特殊功能</strong></a><br>:::</p>
+<p>:::info<br>以下介绍可以使用的markdown或者标签代码。<br>功能大部分基于<code>hexo-renderer-multi-markdown-it</code>渲染器，尤其是代码块的显示，与默认渲染器不兼容。<br>:::</p>
+<h1 id="links-链接块"><a href="#links-链接块" class="headerlink" title="links 链接块"></a><code>links</code> 链接块</h1><p>本功能参考NexT，基于Hexo Tag功能，用来建立友链或其他网址链接功能。</p>
+<p>文章中的使用格式：</p>
+<ol>
+<li>使用<code>links</code>标签块，包围<code>yml</code>语法书写的内容，字段包括</li>
+</ol>
+<p>–|–|–<br><code>site</code>|站点名称|必填<br><code>owner</code>|管理员名字|可选，默认为<code>site</code>的值<br><code>url</code>|站点链接|必填<br><code>desc</code>|站点描述|可选，默认为<code>url</code>的值<br><code>image</code>|站点图片|可选，默认为<code>images/404.png</code><br><code>color</code>|方块颜色|可选，默认为<code>#666</code></p>
+<pre><code class="raw">&amp;#123;% links %&amp;#125;
+- site: #站点名称
+  owner: #管理员名字
+  url: #站点网址
+  desc: #简短描述
+  image: #一张图片
+  color: #颜色代码
+&amp;#123;% endlinks %&amp;#125;
+</code></pre>
+<p>举个栗子：</p>
+<pre><code class="raw">&amp;#123;% links %&amp;#125;
+- site: 優萌初華
+  owner: 霜月琉璃
+  url: https://shoka.lostyu.me
+  desc: 琉璃的医学 &amp; 编程笔记
+  image: https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg
+  color: &quot;#e9546b&quot;
+
+- site: 優萌初華
+  owner: 霜月琉璃
+  url: https://shoka.lostyu.me
+  image: images/avatar.jpg
+
+- site: 優萌初華
+  url: https://shoka.lostyu.me
+  desc: 琉璃的医学 &amp; 编程笔记
+  color: &quot;#9d5b8b&quot;
+&amp;#123;% endlinks %&amp;#125;
+</code></pre>
+<p>{% links %}</p>
+<ul>
+<li><p>site: 優萌初華<br>owner: 霜月琉璃<br>url: <a href="https://shoka.lostyu.me/">https://shoka.lostyu.me</a><br>desc: 琉璃的医学 &amp; 编程笔记<br>image: <a href="https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg">https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg</a><br>color: “#e9546b”</p>
+</li>
+<li><p>site: 優萌初華<br>owner: 霜月琉璃<br>url: <a href="https://shoka.lostyu.me/">https://shoka.lostyu.me</a><br>image: images&#x2F;avatar.jpg</p>
+</li>
+<li><p>site: 優萌初華<br>url: <a href="https://shoka.lostyu.me/">https://shoka.lostyu.me</a><br>desc: 琉璃的医学 &amp; 编程笔记<br>color: “#9d5b8b”<br>{% endlinks %}</p>
+</li>
+</ul>
+<ol start="2">
+<li>以上标签块里的内容，还可以保存到一个<code>yml</code>文件中，然后使用<code>linksfile</code>标签。<br>其中，<code>path</code>位于<code>&lt;root&gt;/source</code>目录下。</li>
+</ol>
+<pre><code class="raw">&amp;#123;% linksfile [path] %&amp;#125;
+</code></pre>
+<p>举个栗子：</p>
+<pre><code class="raw">&amp;#123;% linksfile friends/_data.yml %&amp;#125;
+</code></pre>
+<h1 id="code代码块"><a href="#code代码块" class="headerlink" title="code代码块"></a><code>code</code>代码块</h1><p>使用<code>markdown-it-prism</code>进行代码高亮，支持显示行号、行高亮<code>mark</code>、命令行提示符<code>command</code>、代码块标题。</p>
+<p>基本格式：<code>[language] [title] [url] [link text] [mark] [command]</code></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>language</td>
+<td>- 支持的语言<a href="https://prismjs.com/#supported-languages">戳此</a></td>
+<td>null \</td>
+</tr>
+<tr>
+<td></td>
+<td>- 如果不需要代码高亮，但希望显示代码块样式，则设为<code>raw</code></td>
+<td>\</td>
+</tr>
+<tr>
+<td></td>
+<td>- 留空或设为<code>info</code>，将不显示代码高亮和代码块样式</td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>代码块的标题文字</td>
+<td>null</td>
+</tr>
+<tr>
+<td>url</td>
+<td>代码块标题右侧显示的链接</td>
+<td>null</td>
+</tr>
+<tr>
+<td>link text</td>
+<td>上述链接显示的标题</td>
+<td>link</td>
+</tr>
+<tr>
+<td>mark</td>
+<td>行高亮显示，格式为<code>mark:行号,行号开始-行号结束,其他行号</code>。</td>
+<td>null \</td>
+</tr>
+<tr>
+<td></td>
+<td>例如<code>mark:1,4-7,10</code>，将高亮显示第1、4、5、6、7、10行</td>
+<td></td>
+</tr>
+<tr>
+<td>command</td>
+<td>命令行提示符，格式为&#96;command:(“提示内容”:行号,行号</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>例如&#96;command:(“[root@localhost] $”:1,9-10</td>
+<td></td>
+</tr>
+</tbody></table>
+<pre><code class="raw">```java 行高亮 https://shoka.lostyu.me 参考链接 mark:1,6-7
+import java.util.Scanner;
+...
+Scanner in = new Scanner(System.in);
+// 输入Scan之后，按下键盘 Alt + “/” 键，Eclipse下自动补全。
+
+System.out.println(in.nextLine());
+System.out.println(&quot;Hello&quot; + &quot; world.&quot;);
+```
+
+```bash 命令行提示符 command:(&quot;[root@localhost] $&quot;:1,9-10||&quot;[admin@remotehost] #&quot;:4-6)
+pwd
+/usr/home/chris/bin
+ls -la
+total 2
+drwxr-xr-x   2 chris  chris     11 Jan 10 16:48 .
+drwxr--r-x  45 chris  chris     92 Feb 14 11:10 ..
+-rwxr-xr-x   1 chris  chris    444 Aug 25  2013 backup
+-rwxr-xr-x   1 chris  chris    642 Jan 17 14:42 deploy
+git add -A
+git commit -m &quot;update&quot;
+git push
+```
+</code></pre>
+<pre><code class="java">import java.util.Scanner;
+...
+Scanner in = new Scanner(System.in);
+// 输入Scan之后，按下键盘 Alt + “/” 键，Eclipse下自动补全。
+
+System.out.println(in.nextLine());
+System.out.println(&quot;Hello&quot; + &quot; world.&quot;);
+</code></pre>
+<pre><code class="bash">pwd
+/usr/home/chris/bin
+ls -la
+total 2
+drwxr-xr-x   2 chris  chris     11 Jan 10 16:48 .
+drwxr--r-x  45 chris  chris     92 Feb 14 11:10 ..
+-rwxr-xr-x   1 chris  chris    444 Aug 25  2013 backup
+-rwxr-xr-x   1 chris  chris    642 Jan 17 14:42 deploy
+git add -A
+git commit -m &quot;update&quot;
+git push
+</code></pre>
+<h1 id="quiz-练习题与答案"><a href="#quiz-练习题与答案" class="headerlink" title="quiz 练习题与答案"></a><code>quiz</code> 练习题与答案</h1><p>这个功能是用来显示练习题的。<br>需要在Front Matter中添加<code>quiz: true</code>，以正确显示题型标签。</p>
+<pre><code class="raw">---
+title: 练习题与答案
+quiz: true
+---
+
+1. 编译时多态主要指运算符重载与函数重载，而运行时多态主要指虚函数。 {.quiz .true}
+
+2. 有基类`SHAPE`，派生类`CIRCLE`，声明如下变量：  {.quiz .multi}
+    ```cpp
+    SHAPE shape1,*p1;
+    CIRCLE circle1,*q1;
+    ```
+    下列哪些项是“派生类对象替换基类对象”。
+    - `p1=&amp;circle1;` {.correct}
+    - `q1=&amp;shape1;`
+    - `shape1=circle1;` {.correct}
+    - `circle1=shape1;`
+{.options}
+    &gt; - :heavy_check_mark: 令基类对象的指针指向派生类对象
+    &gt; - :x: 派生类指针指向基类的引用
+    &gt; - :heavy_check_mark: 派生类对象给基类对象赋值
+    &gt; - :x: 基类对象给派生类对象赋值
+    &gt; {.options}
+
+3. 下列叙述正确的是 []{.gap} 。 {.quiz}
+    - 虚函数只能定义成无参函数
+    - 虚函数不能有返回值
+    - 能定义虚构造函数
+    - A、B、C都不对 {.correct}
+{.options}
+
+10. 如果定义`int e=8; double f=6.4, g=8.9;`，则表达式 `f+int(e/3*int(f+g)/2)%4` 的值为 [9.4]{.gap}。 {.quiz .fill}
+    &gt; 注意运算顺序和数据类型
+    &gt; [8.4]{.mistake}
+</code></pre>
+<p>点击选项可以显示答案，以及答案解析。</p>
+<ol>
+<li><p>下列叙述正确的是 []{.gap} 。 {.quiz}</p>
+<ul>
+<li>虚函数只能定义成无参函数</li>
+<li>虚函数不能有返回值</li>
+<li>能定义虚构造函数</li>
+<li>A、B、C都不对 {.correct}<br>{.options}</li>
+</ul>
+</li>
+<li><p>有基类<code>SHAPE</code>，派生类<code>CIRCLE</code>，声明如下变量：  {.quiz .multi}</p>
+<pre><code class="cpp">SHAPE shape1,*p1;
+CIRCLE circle1,*q1;
+</code></pre>
+<p> 下列哪些项是“派生类对象替换基类对象”。</p>
+<ul>
+<li><code>p1=&amp;circle1;</code> {.correct}</li>
+<li><code>q1=&amp;shape1;</code></li>
+<li><code>shape1=circle1;</code> {.correct}</li>
+<li><code>circle1=shape1;</code><br>{.options}<blockquote>
+<ul>
+<li>:heavy_check_mark: 令基类对象的指针指向派生类对象</li>
+<li>:x: 派生类指针指向基类的引用</li>
+<li>:heavy_check_mark: 派生类对象给基类对象赋值</li>
+<li>:x: 基类对象给派生类对象赋值<br>{.options}</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>编译时多态主要指运算符重载与函数重载，而运行时多态主要指虚函数。 {.quiz .true}</p>
+</li>
+<li><p>如果定义<code>int e=8; double f=6.4, g=8.9;</code>，则表达式 <code>f+int(e/3*int(f+g)/2)%4</code> 的值为 [9.4]{.gap}。 {.quiz .fill}</p>
+<blockquote>
+<p>注意运算顺序和数据类型<br>[8.4]{.mistake}</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>本功能基于<code>markdown-it-bracketed-spans</code>和<code>markdown-it-attrs</code></p>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>{.quiz}</code></td>
+<td>选择题</td>
+</tr>
+<tr>
+<td><code>{.quiz .multi}</code></td>
+<td>多选题</td>
+</tr>
+<tr>
+<td><code>{.quiz .true}</code></td>
+<td>正确的判断题</td>
+</tr>
+<tr>
+<td><code>{.quiz .false}</code></td>
+<td>错误的判断题</td>
+</tr>
+<tr>
+<td><code>{.quiz .fill}</code></td>
+<td>填空题</td>
+</tr>
+<tr>
+<td><code>[]{.gap}</code></td>
+<td>空白下划线</td>
+</tr>
+<tr>
+<td><code>[答案内容]{.gap}</code></td>
+<td>答案内容带下划线</td>
+</tr>
+<tr>
+<td><code>{.options}</code></td>
+<td>ABCDE选项</td>
+</tr>
+<tr>
+<td><code>{.correct}</code></td>
+<td>选择题的正确选项</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>答案解析</td>
+</tr>
+<tr>
+<td><code>[8.4]{.mistake}</code></td>
+<td>错题备注</td>
+</tr>
+</tbody></table>
+<h1 id="emoji-绘文字"><a href="#emoji-绘文字" class="headerlink" title="emoji 绘文字"></a><code>emoji</code> 绘文字</h1><p>本功能基于<code>markdown-it-emoji</code>，所有<a href="https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json">标签参考戳此</a></p>
+<pre><code class="raw">:kissing_heart:
+:ring:
+:notes:
+</code></pre>
+<p>:kissing_heart: :ring: :notes:</p>
+<h1 id="effects-文字特效"><a href="#effects-文字特效" class="headerlink" title="effects 文字特效"></a><code>effects</code> 文字特效</h1><p>本功能基于<code>markdown-it-ins</code>、 <code>markdown-it-bracketed-spans</code>和<code>markdown-it-attrs</code></p>
+<blockquote>
+<p>本主题风格颜色通用样式：default、primary、success、info、warning、danger</p>
+</blockquote>
+<pre><code class="raw">++下划线++
+++波浪线++{.wavy}
+++着重点++{.dot}
+++紫色下划线++{.primary}
+++绿色波浪线++{.wavy .success}
+++黄色着重点++{.dot .warning}
+~~删除线~~
+~~红色删除线~~{.danger}
+==荧光高亮==
+[赤橙黄绿青蓝紫]{.rainbow}
+[红色]{.red}
+[粉色]{.pink}
+[橙色]{.orange}
+[黄色]{.yellow}
+[绿色]{.green}
+[靛青]{.aqua}
+[蓝色]{.blue}
+[紫色]{.purple}
+[灰色]{.grey}
+快捷键 [Ctrl]{.kbd} + [C]{.kbd .red}
+H~2~0
+29^th^
+</code></pre>
+<p>:::warning<br>这段代码因为自动被pangu.js处理了一下，加了几个空格，导致直接复制代码不能正常显示。<br>正确的代码是<code>++下划线++</code> <code>~~删除线~~</code> <code>==荧光高亮==</code>，不能有空格哦。<br>:::</p>
+<p>++下划线++<br>++波浪线++{.wavy}<br>++着重点++{.dot}<br>++紫色下划线++{.primary}<br>++绿色波浪线++{.wavy .success}<br>++黄色着重点++{.dot .warning}<br><del>删除线</del><br><del>红色删除线</del>{.danger}<br>&#x3D;&#x3D;荧光高亮&#x3D;&#x3D;<br>[赤橙黄绿青蓝紫]{.rainbow}<br>[红色]{.red}<br>[粉色]{.pink}<br>[橙色]{.orange}<br>[黄色]{.yellow}<br>[绿色]{.green}<br>[靛青]{.aqua}<br>[蓝色]{.blue}<br>[紫色]{.purple}<br>[灰色]{.grey}<br>快捷键 [Ctrl]{.kbd} + [C]{.kbd .red}<br>H<del>2</del>0<br>29^th^</p>
+<h1 id="spoiler隐藏文字"><a href="#spoiler隐藏文字" class="headerlink" title="spoiler隐藏文字"></a><code>spoiler</code>隐藏文字</h1><p>本功能基于<code>markdown-it-spoiler</code>和<code>markdown-it-attrs</code></p>
+<pre><code class="raw">!!黑幕黑幕黑幕黑幕黑幕黑幕!! ： 鼠标滑过显示内容
+!!模糊模糊模糊模糊模糊模糊!!{.bulr} ： 选中文字显示内容
+</code></pre>
+<p>!!黑幕黑幕黑幕黑幕黑幕黑幕!! ： 鼠标滑过显示内容<br>!!模糊模糊模糊模糊模糊模糊!!{.bulr} ： 选中文字显示内容</p>
+<h1 id="label-标签块"><a href="#label-标签块" class="headerlink" title="label 标签块"></a><code>label</code> 标签块</h1><p>本功能基于<code>markdown-it-bracketed-spans</code>和<code>markdown-it-attrs</code><br>有以下颜色可选</p>
+<pre><code class="raw">[default]{.label}
+[primary]{.label .primary}
+[info]{.label .info}
+[:heavy_check_mark:success]{.label .success}
+[warning]{.label .warning}
+[:broken_heart:danger]{.label .danger}
+</code></pre>
+<p>[default]{.label}<br>[primary]{.label .primary}<br>[info]{.label .info}<br>[:heavy_check_mark:success]{.label .success}<br>[warning]{.label .warning}<br>[:broken_heart:danger]{.label .danger}</p>
+<h1 id="note-提醒块"><a href="#note-提醒块" class="headerlink" title="note 提醒块"></a><code>note</code> 提醒块</h1><p>本功能基于<code>markdown-it-container</code><br>标签为：</p>
+<p>–|–<br>开始行|<code>:::[风格颜色]</code><br>结束行|<code>:::</code></p>
+<pre><code class="raw">:::default
+默认默认
+:::
+
+:::primary
+基本基本
+:::
+
+:::info
+提示提示
+:::
+
+:::success
+成功成功
+:::
+
+:::warning
+警告警告
+:::
+
+:::danger
+危险危险
+:::
+
+:::danger no-icon
+危险危险
+:::
+</code></pre>
+<p>:::default<br>默认默认<br>:::</p>
+<p>:::primary<br>基本基本<br>:::</p>
+<p>:::info<br>提示提示<br>:::</p>
+<p>:::success<br>成功成功<br>:::</p>
+<p>:::warning<br>警告警告<br>:::</p>
+<p>:::danger<br>危险危险<br>:::</p>
+<p>:::danger no-icon<br>没有图标<br>:::</p>
+<h1 id="tab标签卡"><a href="#tab标签卡" class="headerlink" title="tab标签卡"></a><code>tab</code>标签卡</h1><p>本功能基于<code>markdown-it-container</code><br>标签为：</p>
+<p>–|–<br>开始行|<code>;;;[同一ID] [标签名称]</code><br>结束行|<code>;;;</code></p>
+<pre><code class="raw">;;;id1 卡片1
+这里是卡片1的内容
+**加粗**
+[success]{.label .success}
+
+&amp;#123;% links %&amp;#125;
+- site: 優萌初華
+  owner: 霜月琉璃
+  url: https://shoka.lostyu.me
+  desc: 琉璃的医学 &amp; 编程笔记
+  image: https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg
+  color: &quot;#e9546b&quot;
+&amp;#123;% endlinks %&amp;#125;
+;;;
+
+;;;id1 卡片2
+这里是卡片2的内容
+:::danger
+危险危险
+:::
+- 第一行
+- 第二行
+;;;
+
+;;;id2 ②号标签卡片1
+这里是卡片1的内容
+;;;
+
+;;;id2 ②号标签卡片2
+这里是卡片2的内容
+;;;
+</code></pre>
+<p>;;;id1 卡片1<br>这里是卡片1的内容<br><strong>加粗</strong><br>[success]{.label .success}</p>
+<p>{% links %}</p>
+<ul>
+<li>site: 優萌初華<br>owner: 霜月琉璃<br>url: <a href="https://shoka.lostyu.me/">https://shoka.lostyu.me</a><br>desc: 琉璃的医学 &amp; 编程笔记<br>image: <a href="https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg">https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg</a><br>color: “#e9546b”<br>{% endlinks %}<br>;;;</li>
+</ul>
+<p>;;;id1 卡片2<br>这里是卡片2的内容<br>:::danger<br>危险危险<br>:::</p>
+<ul>
+<li>第一行</li>
+<li>第二行<br>;;;</li>
+</ul>
+<p>;;;id2 ②号标签卡片1<br>这里是卡片1的内容<br>;;;</p>
+<p>;;;id2 ②号标签卡片2<br>这里是卡片2的内容<br>;;;</p>
+<h1 id="collapse-折叠块"><a href="#collapse-折叠块" class="headerlink" title="collapse 折叠块"></a><code>collapse</code> 折叠块</h1><p>本功能基于<code>markdown-it-container</code><br>标签为：</p>
+<p>–|–<br>开始行|<code>+++[风格颜色] [标题文字]</code><br>结束行|<code>+++</code></p>
+<pre><code class="raw">+++ 默认默认 这里是一段文字
+++下划线++
++++
+
+
++++primary 紫色
+:::info
+参考信息
+:::
+
+- 第一行
+- 第二行
++++
+
+
++++info  蓝色
+;;;id3 卡片1
+这里是卡片1的内容
+;;;
+
+;;;id3 卡片2
+这里是卡片2的内容
+;;;
++++
+
++++success 绿色
+&amp;#123;% links %&amp;#125;
+- site: 優萌初華
+  url: https://shoka.lostyu.me
+  color: &quot;#e9546b&quot;
+&amp;#123;% endlinks %&amp;#125;
++++
+
++++warning 黄色
+!!警告警告警告警告警告!!{.bulr}
+[label]{.label .success}
++++
+
++++danger 红色
+[danger]{.label .danger}
++++
+</code></pre>
+<p>+++ 默认默认 这里是一段文字<br>++下划线++<br>+++</p>
+<p>+++primary 紫色<br>:::info<br>参考信息<br>:::</p>
+<ul>
+<li>第一行</li>
+<li>第二行<br>+++</li>
+</ul>
+<p>+++info  蓝色<br>;;;id3 卡片1<br>这里是卡片1的内容<br>++波浪线++{.wavy}<br>;;;</p>
+<p>;;;id3 卡片2<br>这里是卡片2的内容<br>;;;<br>+++</p>
+<p>+++success 绿色<br>{% links %}</p>
+<ul>
+<li>site: 優萌初華<br>url: <a href="https://shoka.lostyu.me/">https://shoka.lostyu.me</a><br>color: “#e9546b”<br>{% endlinks %}<br>+++</li>
+</ul>
+<p>+++warning 黄色<br>!!警告警告警告警告警告!!{.bulr}<br>[label]{.label .success}<br>+++</p>
+<p>+++danger 红色<br>[danger]{.label .danger}<br>+++</p>
+<h1 id="taskList-待办事项"><a href="#taskList-待办事项" class="headerlink" title="taskList 待办事项"></a><code>taskList</code> 待办事项</h1><p>本功能基于<code>markdown-it-task-checkbox</code>。<br>可以利用<code>markdown-it-attrs</code>添加风格颜色，只可以给<code>ul</code>标签添加，需要新建两行。</p>
+<pre><code class="raw">- [ ] 这是一个小叉叉
+- [x] 这是一个红色勾勾
+
+{.danger}
+
+- [ ] 未完成
+- [x] 完成
+
+{.primary}
+
+- [ ] 未完成
+- [x] 默认颜色
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"> 这是一个小叉叉</li>
+<li><input checked="" disabled="" type="checkbox"> 这是一个红色勾勾</li>
+</ul>
+<p>{.danger}</p>
+<ul>
+<li><input disabled="" type="checkbox"> 未完成</li>
+<li><input checked="" disabled="" type="checkbox"> 完成</li>
+</ul>
+<p>{.primary}</p>
+<ul>
+<li><input disabled="" type="checkbox"> 未完成</li>
+<li><input checked="" disabled="" type="checkbox"> 默认颜色</li>
+</ul>
+<h1 id="furigana文字注音"><a href="#furigana文字注音" class="headerlink" title="furigana文字注音"></a><code>furigana</code>文字注音</h1><p>原本用于日语汉字假名注音，但别的注音也可以。<br>为了兼容性，采用<code>markdown-it-ruby</code>的基本格式：<code>{文字^注音}</code>，并且为了兼容表格，将分隔符由<code>|</code>换成了<code>^</code>。<br>注音分隔基于<code>furigana-markdown-it</code><a href="https://www.npmjs.com/package/furigana-markdown-it#quick-usage">显示说明看这里</a></p>
+<p>–|–<br><code>{取り返す^とりかえす}</code>|{取り返す^とりかえす}<br><code>{可愛い犬^か+わい・い・いぬ}</code>|{可愛い犬^か+わい・い・いぬ}<br><code>{可愛い犬^か・わい・いいぬ}</code>|{可愛い犬^か・わい・いいぬ}<br><code>{アクセラレータ^accelerator}</code> | {アクセラレータ^accelerator}<br><code>{accelerator^アクセラレータ}</code> | {accelerator^アクセラレータ}<br><code>{食べる^たべる}</code> | {食べる^たべる}<br><code>{食べる^=たべる}</code> | {食べる^&#x3D;たべる}<br><code>{あいうえお^*}</code> | {あいうえお^*}<br><code>{あいうえお^*❤}</code> | {あいうえお^*❤}<br><code>{常用账号^contact}</code>|{常用账号^contact}</p>
+<h1 id="media多媒体"><a href="#media多媒体" class="headerlink" title="media多媒体"></a><code>media</code>多媒体</h1><p>本功能基于Hexo Tag功能，使用<code>media</code>标签，目前可选择两种类型，即<code>audio</code>和<code>video</code>。</p>
+<pre><code class="raw">&amp;#123;% media audio %&amp;#125;
+...音频列表
+&amp;#123;% endmedia %&amp;#125;
+
+&amp;#123;% media video %&amp;#125;
+...视频列表
+&amp;#123;% endmedia %&amp;#125;
+</code></pre>
+<p>标签包绕一段<code>yml</code>格式的内容，格式与<a href="../config/#%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90">背景音乐</a>的配置类似。</p>
+<p>亦可以直接使用网易云、虾米、QQ音乐的播放列表、单曲。</p>
+<pre><code class="raw">&amp;#123;% media audio %&amp;#125;
+- title: 列表1
+  list:
+    - https://music.163.com/#/playlist?id=2943811283
+    - https://music.163.com/#/playlist?id=2297706586
+- title: 列表2
+  list:
+    - https://music.163.com/#/playlist?id=2031842656
+&amp;#123;% endmedia %&amp;#125;
+
+
+&amp;#123;% media video %&amp;#125;
+- name: &quot;测试1&quot;
+  url: https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0
+- name: &quot;测试2&quot;
+  url: https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0
+&amp;#123;% endmedia %&amp;#125;
+</code></pre>
+<p>{% media audio %}</p>
+<ul>
+<li>title: 列表1<br>list:<ul>
+<li><a href="https://music.163.com/#/playlist?id=2943811283">https://music.163.com/#/playlist?id=2943811283</a></li>
+<li><a href="https://music.163.com/#/playlist?id=2297706586">https://music.163.com/#/playlist?id=2297706586</a></li>
+</ul>
+</li>
+<li>title: 列表2<br>list:<ul>
+<li><a href="https://music.163.com/#/playlist?id=2031842656">https://music.163.com/#/playlist?id=2031842656</a><br>{% endmedia %}</li>
+</ul>
+</li>
+</ul>
+<p>{% media video %}</p>
+<ul>
+<li>name: “测试1”<br>url: <a href="https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0">https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0</a></li>
+<li>name: “测试2”<br>url: <a href="https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0">https://cdn.kastatic.org/ka-youtube-converted/O_nY1TM2RZM.mp4/O_nY1TM2RZM.mp4#t=0</a><br>{% endmedia %}</li>
+</ul>
+<h1 id="math数学公式"><a href="#math数学公式" class="headerlink" title="math数学公式"></a><code>math</code>数学公式</h1><p>本功能基于<code>markdown-it-katex</code><br>在Front Matter中添加<code>math: true</code>以支持<a href="https://katex.org/">KaTex</a></p>
+<pre><code class="raw">---
+title: 数学公式显示
+math: true
+---
+
+行内公式：$\sqrt{3x-1}+(1+x)^2$
+
+独立块显示：
+$$\begin{array}{c}
+
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp;
+= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \\
+
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \\
+
+\nabla \cdot \vec{\mathbf{B}} &amp; = 0
+
+\end{array}$$
+</code></pre>
+<p>行内公式：$\sqrt{3x-1}+(1+x)^2$</p>
+<p>独立块显示：<br>$$\begin{array}{c}</p>
+<p>\nabla \times \vec{\mathbf{B}} -, \frac1c, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp;<br>&#x3D; \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} &amp; &#x3D; 4 \pi \rho \</p>
+<p>\nabla \times \vec{\mathbf{E}}, +, \frac1c, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; &#x3D; \vec{\mathbf{0}} \</p>
+<p>\nabla \cdot \vec{\mathbf{B}} &amp; &#x3D; 0</p>
+<p>\end{array}$$</p>
+<h1 id="mermaid流程图"><a href="#mermaid流程图" class="headerlink" title="mermaid流程图"></a><code>mermaid</code>流程图</h1><p>本功能基于<code>markdown-it-mermaid</code><br>在Front Matter中添加<code>mermaid: true</code>以支持<a href="https://mermaid-js.github.io/mermaid/#/">Mermaid</a></p>
+<pre><code class="raw">---
+title: 流程图显示
+mermaid: true
+---
+
+```mermaid
+graph LR
+    A[Square Rect] -- Link text --&gt; B((Circle))
+    A --&gt; C(Round Rect)
+    B --&gt; D{Rhombus}
+    C --&gt; D
+```
+
+```mermaid
+sequenceDiagram
+    loop Daily query
+        Alice-&gt;&gt;Bob: Hello Bob, how are you?
+        alt is sick
+            Bob-&gt;&gt;Alice: Not so good :(
+        else is well
+            Bob-&gt;&gt;Alice: Feeling fresh like a daisy
+        end
+
+        opt Extra response
+            Bob-&gt;&gt;Alice: Thanks for asking
+        end
+    end
+```
+</code></pre>
+<pre><code class="mermaid">graph LR
+    A[Square Rect] -- Link text --&gt; B((Circle))
+    A --&gt; C(Round Rect)
+    B --&gt; D{Rhombus}
+    C --&gt; D
+</code></pre>
+<pre><code class="mermaid">sequenceDiagram
+    loop Daily query
+        Alice-&gt;&gt;Bob: Hello Bob, how are you?
+        alt is sick
+            Bob-&gt;&gt;Alice: Not so good :(
+        else is well
+            Bob-&gt;&gt;Alice: Feeling fresh like a daisy
+        end
+
+        opt Extra response
+            Bob-&gt;&gt;Alice: Thanks for asking
+        end
+    end
+</code></pre>
