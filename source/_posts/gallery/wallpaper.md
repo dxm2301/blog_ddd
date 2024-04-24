@@ -2,7 +2,7 @@
 title: Wallpaper
 date: 2024-04-19
 layout: post
-cover: wp_0002.png
+cover: wp_0002.jpg
 categories:
 - [Gallery, Wallpaper]
 tags:

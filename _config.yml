@@ -57,7 +57,6 @@ category_map:
   Note: note
   Gallery: gallery
   Job: job
-  # 算子开发: operator
 
 tag_map: null
 meta_generator: true

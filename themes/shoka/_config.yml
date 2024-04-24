@@ -98,7 +98,13 @@ menu:
     categories: /categories/ || th
     tags: /tags/ || tags
   gallery: /gallery/ || heart
-  links: /links/ || magic
+  links: 
+    default: / || link-alt
+    postgraduate: /postgraduate/ || pen
+    兴趣: /兴趣/ || flag
+    在线工具: /在线工具/ || edge
+    工作: /工作/ || coffee
+    记忆长廊: /记忆长廊/ || sakura
 
 # Social Links
 # Usage: `Key: permalink || icon || color`
