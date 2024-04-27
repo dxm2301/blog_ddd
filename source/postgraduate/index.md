@@ -94,6 +94,27 @@ layout: post
 
 {% endlinks %}
 
+
+## 数学
+{% links %}
+- site: 线性代数
+  url: https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLBdAMJOKE8FEdQeS2AyrZ-y5MurU2B1SE
+  desc: 3D效果演示线性代数本质
+  image: images/dxm.jpg
+  color: "#e9546b"
+
+{% endlinks %}
+
+## 计算机科学
+{% links %}
+- site: Crash Course Computer Science
+  url: https://www.bilibili.com/video/BV1EW411u7th/?p=1&vd_source=80105a56a6529840c39df4d1ac4322b6
+  desc: 计算机科学速成网课
+  image: images/dxm.jpg
+  color: "#e9546b"
+
+{% endlinks %}
+
 # 看书
 {% links %}
 - site: 鸠摩搜书
@@ -105,6 +126,23 @@ layout: post
 - site: 书享家
   url: https://shuxiangjia.cn/
   desc: 搜书网站x2
+  image: images/dxm.jpg
+  color: "#e9546b"
+
+{% endlinks %}
+
+
+# 翻译
+{% links %}
+- site: DeepL
+  url: https://www.deepl.com/translator
+  desc: 翻译首推
+  image: images/dxm.jpg
+  color: "#e9546b"
+
+- site: 谷歌翻译
+  url: https://translate.google.com/?hl=zh-CN&sl=auto&tl=en&text=%E8%BF%81%E7%A7%BB&op=translate
+  desc: 免费首推
   image: images/dxm.jpg
   color: "#e9546b"
 

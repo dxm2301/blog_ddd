@@ -1,7 +1,6 @@
 ---
 title: Wallpaper
-date: 2024-04-19
-layout: post
+date: 2024.04.18 18:00
 cover: wp_0002.jpg
 categories:
 - [Gallery, Wallpaper]
@@ -27,4 +26,4 @@ img {
 ![wp_0004](wp_0004.png "我什么都做不到")
 ![wp_0005](wp_0005.jpg "莓办法")
 ![wp_0006](wp_0006.png "雷电将军")
-![wp_0008](wp_0008.jpg "星系")
+![wp_0008](wp_0008.jpg "太阳系")

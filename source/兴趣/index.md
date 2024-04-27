@@ -73,6 +73,43 @@ layout: page
 {% endlinks %}
 
 # 大模型
+## Chat接口
+{% links %}
+- site: chatGPT-3.5
+  url: https://chat.openai.com/chat
+  desc: 基础版（不限次数、免费）
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+- site: BingAi
+  url: https://www.bing.com/search?form=MY0291&OCID=MY0291&q=Bing+AI&showconv=1&ntref=1
+  desc: 支持联网，免费次数较多
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+
+
+- site: Gemini
+  url: https://gemini.google.com/app
+  desc: google官方
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+- site: MetaAi
+  url: https://www.meta.ai/
+  desc: Meta官方
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+- site: huggingChat
+  url: https://huggingface.co/chat/
+  desc: 开源模型，免费次数有限
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+{% endlinks %}
+
+
+
 ## ChatGPT
 {% links %}
 - site: chatgpt-3.5
@@ -210,6 +247,39 @@ layout: page
   color: "#9d5b8b"
 {% endlinks %}
 
+# 个人blog
+{% links %}
+- site: 个人blog搭建教程
+  url: https://blog.cuijiacai.com/blog-building/
+  desc: 感谢大佬，流程清晰！
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+- site: hexo-shoka主题
+  url: https://shoka.lostyu.me/computer-science/note/theme-shoka-doc/display/
+  desc: 感谢大佬，主题风格很棒！
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+- site: Netlify
+  url: https://app.netlify.com/
+  desc: 免费提供静态网站部署服务的平台
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+- site: Postimage
+  url: https://postimages.org/
+  desc: 免费图床
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+- site: Algolia
+  url: https://dashboard.algolia.com
+  desc: 支持站内搜索功能
+  image: images/dxm.jpg
+  color: "#9d5b8b"
+
+{% endlinks %}
 
 # 美化&实用推荐
 ## PC软件

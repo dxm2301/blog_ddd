@@ -57,7 +57,23 @@ category_map:
   Note: note
   Gallery: gallery
   Job: job
-
+algolia:
+  appId: "KTF4H8ZRH3"
+  apiKey: "6b6e2285421ae1a2b92d63b3acb04867"
+  adminApiKey: "d67680e03b5d640c0bff5fcfc5285754"
+  chunkSize: 5000
+  indexName: "shoka"
+  fields:
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - gallery
+    - permalink
+    - photos
+    - slug
+    - tags
+    - title
+    - path #必须配置
+    - categories #推荐配置
 tag_map: null
 meta_generator: true
 date_format: YYYY-MM-DD

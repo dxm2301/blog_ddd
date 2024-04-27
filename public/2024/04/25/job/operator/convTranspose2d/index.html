@@ -1,0 +1,655 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="blog_dxm" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="blog_dxm" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="blog_dxm" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Conv2d,ConvTranspose2d" />
+
+
+<link rel="canonical" href="http://example.com/2024/04/25/job/operator/convTranspose2d/">
+
+
+
+  <title>
+ConvTranspose2d - 算子开发 - Job |
+DDD = blog_dxm</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">ConvTranspose2d
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-04-25 21:12:10">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-25T21:12:10+08:00">2024-04-25</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>5.3k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>5 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">DDD</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="/2024/04/25/job/operator/convTranspose2d/wp_0005.jpg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/job/" itemprop="item" rel="index" title="In Job"><span itemprop="name">Job</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/job/%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91/" itemprop="item" rel="index" title="In 算子开发"><span itemprop="name">算子开发</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/25/job/operator/convTranspose2d/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/dxm.jpg">
+    <meta itemprop="name" content="dxm">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="blog_dxm">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="ConvTranspose2d"><a href="#ConvTranspose2d" class="headerlink" title="ConvTranspose2d"></a>ConvTranspose2d</h1><h2 id="Research"><a href="#Research" class="headerlink" title="Research"></a>Research</h2><blockquote>
+<ul>
+<li>pytorch文档: <span class="exturl" data-url="aHR0cHM6Ly9weXRvcmNoLm9yZy9kb2NzL3N0YWJsZS9nZW5lcmF0ZWQvdG9yY2gubm4uQ29udjJkLmh0bWwjdG9yY2gubm4uQ29udjJk">conv2d</span></li>
+<li>pytorch文档: <span class="exturl" data-url="aHR0cHM6Ly9weXRvcmNoLm9yZy9kb2NzL3N0YWJsZS9nZW5lcmF0ZWQvdG9yY2gubm4uQ29udlRyYW5zcG9zZTJkLmh0bWwjdG9yY2gubm4uQ29udlRyYW5zcG9zZTJk">convTranspose2d</span></li>
+</ul>
+</blockquote>
+<h3 id="convTranspose2d参数"><a href="#convTranspose2d参数" class="headerlink" title="convTranspose2d参数"></a>convTranspose2d参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.ConvTranspose2d(in_channels, out_channels, kernel_size, stride=<span class="number">1</span>, padding=<span class="number">0</span>, output_padding=<span class="number">0</span>, groups=<span class="number">1</span>, bias=<span class="literal">True</span>, dilation=<span class="number">1</span>, padding_mode=<span class="string">&#x27;zeros&#x27;</span>, device=<span class="literal">None</span>, dtype=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Parameters<ul>
+<li>in_channels (int) – Number of channels in the input image</li>
+<li>out_channels (int) – Number of channels produced by the convolution</li>
+<li>kernel_size (int or tuple) – Size of the convolving kernel</li>
+<li>stride (int or tuple, optional) – Stride of the convolution. Default: 1</li>
+<li>padding (int or tuple, optional) – dilation * (kernel_size - 1) - padding zero-padding will be added to both sides of each dimension in the input. Default: 0</li>
+<li>output_padding (int or tuple, optional) – Additional size added to one side of each dimension in the output shape. Default: 0</li>
+<li>groups (int, optional) – Number of blocked connections from input channels to output channels. Default: 1</li>
+<li>bias (bool, optional) – If True, adds a learnable bias to the output. Default: True</li>
+<li>dilation (int or tuple, optional) – Spacing between kernel elements. Default: 1</li>
+</ul>
+</li>
+</ul>
+<h3 id="convTranspose2d行为"><a href="#convTranspose2d行为" class="headerlink" title="convTranspose2d行为"></a>convTranspose2d行为</h3><blockquote>
+<ul>
+<li>反卷积可视化：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3ZkdW1vdWxpbi9jb252X2FyaXRobWV0aWMvYmxvYi9tYXN0ZXIvUkVBRE1FLm1k">convTranspose2d可视化流程</span></li>
+</ul>
+</blockquote>
+<ul>
+<li>conv2d实现convTranspose2d步骤：<ul>
+<li>Step1: 对input_deconv做swelling操作 &#x3D;&#x3D;&#x3D;&gt; input_conv;</li>
+<li>Step2: 对weight_deconv做transpose操作 &#x3D;&#x3D;&#x3D;&gt; weight_conv;</li>
+<li>Step3：使用weight_conv在input_conv上做常规conv2d操作;</li>
+</ul>
+</li>
+</ul>
+<h2 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h2><h3 id="input-swelling"><a href="#input-swelling" class="headerlink" title="input swelling"></a>input swelling</h3><p><img data-src="/2024/04/25/job/operator/convTranspose2d/ct_001.jpg" alt="ct_001" title="input swelling"></p>
+<h3 id="weight-pattern"><a href="#weight-pattern" class="headerlink" title="weight pattern"></a>weight pattern</h3><p><img data-src="/2024/04/25/job/operator/convTranspose2d/ct_002.jpg" alt="ct_002" title="weight pattern"></p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><h4 id="python脚本"><a href="#python脚本" class="headerlink" title="python脚本"></a>python脚本</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置打印选项</span></span><br><span class="line">torch.set_printoptions(linewidth=<span class="number">10000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义测试用例</span></span><br><span class="line">TEST_CASES = &#123;</span><br><span class="line">    <span class="string">&quot;CASE_1&quot;</span>: &#123;<span class="string">&quot;N&quot;</span>: <span class="number">1</span>, <span class="string">&quot;IC&quot;</span>: <span class="number">1</span>, <span class="string">&quot;IH&quot;</span>: <span class="number">5</span>, <span class="string">&quot;IW&quot;</span>: <span class="number">5</span>, <span class="string">&quot;OC&quot;</span>: <span class="number">1</span>, <span class="string">&quot;stride&quot;</span>: <span class="number">3</span>, <span class="string">&quot;kernel&quot;</span>: <span class="number">3</span>, <span class="string">&quot;padding&quot;</span>: <span class="number">0</span>, <span class="string">&quot;output_padding&quot;</span>: <span class="number">0</span>&#125;,</span><br><span class="line">    <span class="string">&quot;CASE_2&quot;</span>: &#123;<span class="string">&quot;N&quot;</span>: <span class="number">1</span>, <span class="string">&quot;IC&quot;</span>: <span class="number">1</span>, <span class="string">&quot;IH&quot;</span>: <span class="number">4</span>, <span class="string">&quot;IW&quot;</span>: <span class="number">6</span>, <span class="string">&quot;OC&quot;</span>: <span class="number">1</span>, <span class="string">&quot;stride&quot;</span>: <span class="number">2</span>, <span class="string">&quot;kernel&quot;</span>: <span class="number">3</span>, <span class="string">&quot;padding&quot;</span>: <span class="number">1</span>, <span class="string">&quot;output_padding&quot;</span>: <span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择一个测试用例</span></span><br><span class="line">CASE = <span class="string">&quot;CASE_1&quot;</span></span><br><span class="line">params = TEST_CASES[CASE]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从测试用例中获取参数</span></span><br><span class="line">N, IC, IH, IW = params[<span class="string">&quot;N&quot;</span>], params[<span class="string">&quot;IC&quot;</span>], params[<span class="string">&quot;IH&quot;</span>], params[<span class="string">&quot;IW&quot;</span>]</span><br><span class="line">OC = IC</span><br><span class="line">total_size = N * IC * IH * IW</span><br><span class="line">stride, kernel, padding, output_padding = params[<span class="string">&quot;stride&quot;</span>], params[<span class="string">&quot;kernel&quot;</span>], params[<span class="string">&quot;padding&quot;</span>], params[<span class="string">&quot;output_padding&quot;</span>]</span><br><span class="line">padding_conv2d = kernel - padding - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_tensor</span>(<span class="params">total_size</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;创建一个随机张量&quot;&quot;&quot;</span></span><br><span class="line">    tensor = torch.randint(<span class="number">0</span>, <span class="number">256</span>, (total_size,)).<span class="built_in">float</span>() - <span class="number">128</span></span><br><span class="line">    <span class="keyword">return</span> tensor.view(N, IC, IH, IW)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">initialize_weights</span>(<span class="params">OC, IC, kernel</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;初始化权重&quot;&quot;&quot;</span></span><br><span class="line">    new_weights = torch.Tensor(OC, IC, kernel, kernel)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(kernel):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(kernel):</span><br><span class="line">            new_weights[:, :, i, j] = i * kernel + j + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> new_weights</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_conv_transpose</span>(<span class="params">IC, OC, kernel, stride, padding, output_padding, bias=torch.zeros(<span class="params">IC</span>)</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;创建一个卷积转置层&quot;&quot;&quot;</span></span><br><span class="line">    conv_transpose = nn.ConvTranspose2d(IC, OC, kernel_size=kernel, stride=stride, padding=padding, output_padding=output_padding)</span><br><span class="line">    conv_transpose.weight.data = initialize_weights(OC, IC, kernel)</span><br><span class="line">    conv_transpose.bias.data = bias</span><br><span class="line">    <span class="keyword">return</span> conv_transpose</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">explode_input</span>(<span class="params"><span class="built_in">input</span>, stride, padding=<span class="number">1</span>, output_padding=<span class="number">0</span></span>):</span><br><span class="line">    N, C, H, W = <span class="built_in">input</span>.shape</span><br><span class="line">    exploded_H = (H - <span class="number">1</span>) * stride + <span class="number">1</span> + <span class="number">2</span> * padding + output_padding</span><br><span class="line">    exploded_W = (W - <span class="number">1</span>) * stride + <span class="number">1</span> + <span class="number">2</span> * padding + output_padding</span><br><span class="line">    input_exploded = torch.zeros(N, C, exploded_H, exploded_W)</span><br><span class="line">    input_exploded[:, :, padding:(exploded_H - padding):stride, padding:(exploded_W - padding):stride] = <span class="built_in">input</span></span><br><span class="line">    <span class="keyword">return</span> input_exploded</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_conv_2d_simulation</span>(<span class="params">conv_transpose, OC, IC, kernel</span>):</span><br><span class="line">    conv_2d_simulation = nn.Conv2d(OC, IC, kernel_size=kernel, padding=<span class="number">0</span>)</span><br><span class="line">    weights = conv_transpose.weight.detach()</span><br><span class="line">    weights_flipped = torch.flip(weights, [<span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">    weights_swapped_channels = weights_flipped.permute(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    conv_2d_simulation.weight.data = weights_swapped_channels</span><br><span class="line">    conv_2d_simulation.bias.data = conv_transpose.bias.data</span><br><span class="line">    <span class="keyword">return</span> conv_2d_simulation</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">print_results</span>(<span class="params">name, <span class="built_in">input</span>, weight, output</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span> input:\n&quot;</span>, <span class="built_in">input</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span> weight:\n&quot;</span>, weight)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span> output:\n&quot;</span>, output)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compare_outputs</span>(<span class="params">golden_output, simulated_output</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Golden 输出大小:&quot;</span>, golden_output.size())</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;模拟输出大小:&quot;</span>, simulated_output.size())</span><br><span class="line">    golden_output_np = golden_output.detach().numpy()</span><br><span class="line">    simulated_output_padded_np = simulated_output.detach().numpy()</span><br><span class="line">    indices = np.where(golden_output_np != simulated_output_padded_np)</span><br><span class="line">    <span class="keyword">if</span> indices[<span class="number">0</span>].size &gt; <span class="number">0</span>:</span><br><span class="line">        coord = <span class="built_in">tuple</span>(index[<span class="number">0</span>] <span class="keyword">for</span> index <span class="keyword">in</span> indices)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Coordinate: <span class="subst">&#123;coord&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Golden output: <span class="subst">&#123;golden_output_np[coord]&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Simulated output: <span class="subst">&#123;simulated_output_padded_np[coord]&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Output is not equal.&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;=========== ConvTranspose2d and conv2d_simulate all elements are equal. ===========&quot;</span>)</span><br><span class="line"></span><br><span class="line">input_tensor = create_tensor(total_size)</span><br><span class="line">conv_transpose = create_conv_transpose(IC, OC, kernel, stride, padding, output_padding)</span><br><span class="line">golden_output = conv_transpose(input_tensor)</span><br><span class="line">input_padded = explode_input(input_tensor, stride, padding_conv2d, output_padding)</span><br><span class="line">conv_2d_simulation = create_conv_2d_simulation(conv_transpose, OC, IC, kernel)</span><br><span class="line">simulated_output = conv_2d_simulation(input_padded)</span><br><span class="line"></span><br><span class="line">print_results(<span class="string">&quot;conv_transpose&quot;</span>, input_tensor, conv_transpose.weight.data, golden_output)</span><br><span class="line">print_results(<span class="string">&quot;conv_2d_simulation&quot;</span>, input_padded, conv_2d_simulation.weight.data, simulated_output)</span><br><span class="line">compare_outputs(golden_output, simulated_output)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="C-脚本"><a href="#C-脚本" class="headerlink" title="C++脚本"></a>C++脚本</h4><h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2>
+      <div class="tags">
+          <a href="/tags/Conv2d/" rel="tag"><i class="ic i-tag"></i> Conv2d</a>
+          <a href="/tags/ConvTranspose2d/" rel="tag"><i class="ic i-tag"></i> ConvTranspose2d</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-05-06 22:34:51" itemprop="dateModified" datetime="2024-05-06T22:34:51+08:00">2024-05-06</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="dxm WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="dxm Alipay">
+        <p>Alipay</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>dxm <i class="ic i-at"><em>@</em></i>blog_dxm
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/04/25/job/operator/convTranspose2d/" title="ConvTranspose2d">http://example.com/2024/04/25/job/operator/convTranspose2d/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/04/18/gallery/wallpaper/" itemprop="url" rel="prev" data-background-image="&#x2F;2024&#x2F;04&#x2F;18&#x2F;gallery&#x2F;wallpaper&#x2F;wp_0002.jpg" title="Wallpaper">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Wallpaper</span>
+  <h3>Wallpaper</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/04/25/job/operator/rotate/" itemprop="url" rel="next" data-background-image="&#x2F;2024&#x2F;04&#x2F;25&#x2F;job&#x2F;operator&#x2F;rotate&#x2F;rs_0001.png" title="Rotate">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> 算子开发</span>
+  <h3>Rotate</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ConvTranspose2d"><span class="toc-number">1.</span> <span class="toc-text">ConvTranspose2d</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Research"><span class="toc-number">1.1.</span> <span class="toc-text">Research</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#convTranspose2d%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text">convTranspose2d参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#convTranspose2d%E8%A1%8C%E4%B8%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">convTranspose2d行为</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implement"><span class="toc-number">1.2.</span> <span class="toc-text">Implement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#input-swelling"><span class="toc-number">1.2.1.</span> <span class="toc-text">input swelling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#weight-pattern"><span class="toc-number">1.2.2.</span> <span class="toc-text">weight pattern</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#python%E8%84%9A%E6%9C%AC"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">python脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E8%84%9A%E6%9C%AC"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">C++脚本</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Others"><span class="toc-number">1.3.</span> <span class="toc-text">Others</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/2024/04/25/job/operator/convTranspose2d/" rel="bookmark" title="ConvTranspose2d">ConvTranspose2d</a></li><li><a href="/2024/04/25/job/operator/rotate/" rel="bookmark" title="Rotate">Rotate</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="dxm"
+      data-src="/images/dxm.jpg">
+  <p class="name" itemprop="name">dxm</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">11</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">10</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">15</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tLw==" title="https:&#x2F;&#x2F;github.com&#x2F;"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="aHR0cHM6Ly9tYWlsLnFxLmNvbS9jZ2ktYmluL2ZyYW1lX2h0bWw/c2lkPWZremlPMlBjUWxSd01WUXkmcj04ODZkNjY5YmE3Yjg1MjAyNTk5NWIyZjQ1YmEzY2VmYSZsYW5nPXpo" title="https:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;frame_html?sid&#x3D;fkziO2PcQlRwMVQy&amp;r&#x3D;886d669ba7b852025995b2f45ba3cefa&amp;lang&#x3D;zh"><i class="ic i-envelope"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL2hvdA==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;hot"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvbXkvbS9tdXNpYy9wbGF5bGlzdD9pZD00MDgyMTkzNTQ=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;my&#x2F;m&#x2F;music&#x2F;playlist?id&#x3D;408219354"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item bilibili" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tLw==" title="https:&#x2F;&#x2F;www.bilibili.com&#x2F;"><i class="ic i-bilibili"></i></span>
+      <span class="exturl item youtube" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20v" title="https:&#x2F;&#x2F;www.youtube.com&#x2F;"><i class="ic i-youtube"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/resume/" rel="section"><i class="ic i-user"></i>resume</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/gallery/" rel="section"><i class="ic i-heart"></i>gallery</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-link-alt"></i>links</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/postgraduate/" rel="section"><i class="ic i-pen"></i>postgraduate</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/%E5%85%B4%E8%B6%A3/" rel="section"><i class="ic i-flag"></i>兴趣</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/" rel="section"><i class="ic i-edge"></i>在线工具</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/%E5%B7%A5%E4%BD%9C/" rel="section"><i class="ic i-coffee"></i>工作</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/%E8%AE%B0%E5%BF%86%E9%95%BF%E5%BB%8A/" rel="section"><i class="ic i-sakura"></i>记忆长廊</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/04/18/gallery/wallpaper/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/04/25/job/operator/rotate/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Blog/" title="In Blog">Blog</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Blog/Hexo/" title="In Hexo">Hexo</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Blog/Hexo/Theme-Shoka-Documentation/" title="In Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/note/theme-shoka-doc/special/" title="Step.4 主题特殊功能">Step.4 主题特殊功能</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/gallery/" title="In Gallery">Gallery</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/gallery/Wallpaper/" title="In Wallpaper">Wallpaper</a>
+</div>
+
+    <span><a href="/2024/04/18/gallery/wallpaper/" title="Wallpaper">Wallpaper</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/note/" title="In Note">Note</a>
+</div>
+
+    <span><a href="/2024/04/16/note/recording/" title="Recording-Blog">Recording-Blog</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Blog/" title="In Blog">Blog</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Blog/Hexo/" title="In Hexo">Hexo</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Blog/Hexo/Theme-Shoka-Documentation/" title="In Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/note/theme-shoka-doc/display/" title="Step.3 界面显示">Step.3 界面显示</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/job/" title="In Job">Job</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/job/%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91/" title="In 算子开发">算子开发</a>
+</div>
+
+    <span><a href="/2024/04/25/job/operator/rotate/" title="Rotate">Rotate</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Blog/" title="In Blog">Blog</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Blog/Hexo/" title="In Hexo">Hexo</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Blog/Hexo/Theme-Shoka-Documentation/" title="In Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/note/theme-shoka-doc/dependents/" title="Step.1 依赖插件">Step.1 依赖插件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/job/" title="In Job">Job</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/job/Compile/" title="In Compile">Compile</a>
+</div>
+
+    <span><a href="/2024/05/06/job/compile/mlir/" title="MLIR学习">MLIR学习</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/note/" title="In Note">Note</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/note/Linux/" title="In Linux">Linux</a>
+</div>
+
+    <span><a href="/2024/04/25/note/tutorial_linux/" title="Tutorial-Linux">Tutorial-Linux</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Blog/" title="In Blog">Blog</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Blog/Hexo/" title="In Hexo">Hexo</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Blog/Hexo/Theme-Shoka-Documentation/" title="In Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/note/theme-shoka-doc/theme-shoka-doc/" title="Hexo主题Shoka &amp; multi-markdown-it渲染器使用说明">Hexo主题Shoka & multi-markdown-it渲染器使用说明</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/job/" title="In Job">Job</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/job/%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91/" title="In 算子开发">算子开发</a>
+</div>
+
+    <span><a href="/2024/04/25/job/operator/convTranspose2d/" title="ConvTranspose2d">ConvTranspose2d</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">dxm @ DDD</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">110k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">1:40</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/04/25/job/operator/convTranspose2d/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

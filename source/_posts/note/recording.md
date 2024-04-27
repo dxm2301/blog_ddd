@@ -1,6 +1,6 @@
 ---
 title: Recording-Blog 
-date: 2024-04-16 22:53:08
+date: 2024.04.16 22:53:08
 cover: wp_0001.png
 sticky: true
 categories:
@@ -107,7 +107,7 @@ layout: page
 - More info: [dxm github](https://github.com/)
 - More info: [dxm nelify](https://app.netlify.com/sites/blogdxm/overview)
 - More info: [dxm dxm2301.com](https://wanwang.aliyun.com)
-- More info: [dxm 图床](https://pic.gimhoy.com/#1)
+- More info: [dxm 图床](https://postimg.cc/62NyJpW0/2f57b338)
 
 #### 24.04.24：首页分类 & 文章封面图
 - 首页分类
@@ -140,4 +140,34 @@ Gallery: gallery
 ```bash
 # 文章cover
 cover: wp_0002.png
+```
+
+#### 24.04.26：新增Link
+```bash
+# _config.yml设置次级目录
+  links: 
+    default: / || link-alt
+    postgraduate: /postgraduate/ || pen
+    兴趣: /兴趣/ || flag
+    在线工具: /在线工具/ || edge
+    工作: /工作/ || coffee
+    记忆长廊: /记忆长廊/ || sakura
+
+# source目录新建文件夹，layout修改为page
+---
+title: 记忆长廊
+date: 2024-04-16 22:53:08
+layout: page
+---
+```
+
+- 图标目录：themes/shoka/source/css/_iconfont.styl
+
+#### 24.04.28：新增search功能
+- 注册[algolia账号](https://www.algolia.com)
+```bash
+# _config.yml enable search功能
+search:
+  hits:
+    per_page: 10
 ```

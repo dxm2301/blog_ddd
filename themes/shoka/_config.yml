@@ -164,7 +164,7 @@ reward:
   account:
     wechatpay: /wechatpay.png
     alipay: /alipay.png
-    paypal: /paypal.png
+    # paypal: /paypal.png
 
 # TagCloud settings for tags page.
 tagcloud:
@@ -227,7 +227,6 @@ audio:
   - title: 列表1
     list:
      - https://music.163.com/#/my/m/music/playlist?id=408219354
-     - https://music.163.com/#/playlist?id=2297706586
   - title: 列表2
     list:
      - https://music.163.com/#/my/m/music/playlist?id=7987223907

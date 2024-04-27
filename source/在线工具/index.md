@@ -89,3 +89,11 @@ layout: page
   color: "#e9546b"
 {% endlinks %}
 
+# 模型
+{% links %}
+- site: Netron
+  url: https://netron.app/
+  desc: onnx模型查看
+  image: images/dxm.jpg
+  color: "#e9546b"
+{% endlinks %}
